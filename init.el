@@ -79,6 +79,19 @@
 ;;; 编辑增强功能
 ;;; ========================================
 
+;; Evil - Vim 模拟器（为 Vim 用户提供熟悉的编辑体验）
+(use-package evil
+  :init
+  (setq evil-want-keybinding nil)  ; 必须在加载 evil 之前设置，避免与 evil-collection 冲突
+  (evil-mode 1))  ; 启用 Evil 模式，启动后即进入 Vim 的普通模式
+
+;; evil-collection - 为各种 Emacs 模式提供 Vim 键位
+;; 让 Emacs 的各种插件和模式都支持 Vim 风格的操作
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))  ; 初始化所有默认模式的 Vim 键位
+
 ;; 自动补全框架（当前已注释，可按需启用）
 ;; (use-package company
 ;;   :hook (after-init . global-company-mode)  ; Emacs 初始化完成后自动启用
@@ -133,3 +146,15 @@
 ;; (custom-set-variables
 ;;  '(package-selected-packages
 ;;    '(use-package gruvbox-theme company flycheck rainbow-delimiters smartparens magit)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

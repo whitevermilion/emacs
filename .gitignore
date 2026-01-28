@@ -1,0 +1,24 @@
+# Emacs 包仓库（自动生成的插件文件）
+elpa/
+
+# Emacs 原生编译缓存（加速启动的编译文件）
+eln-cache/
+
+# 自动保存列表
+auto-save-list/
+
+# Transient 插件历史记录
+transient/
+
+# Emacs 自动保存文件
+*~
+
+# Emacs 锁文件
+.#*
+
+# Emacs 备份文件
+*.elc
+
+# 临时文件
+*.tmp
+*.swp
