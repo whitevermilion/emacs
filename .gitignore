@@ -22,3 +22,6 @@ transient/
 # 临时文件
 *.tmp
 *.swp
+
+# 临时问题记录文件
+question.md
