@@ -35,6 +35,9 @@
 ;; 7. 其他实用设置
 (require 'init-misc)
 
+;; 邮箱
+(require 'init-mu4e)
+
 ;;; ========================================
 ;;; 自定义变量（由 Emacs 自动管理）
 ;;; ========================================
@@ -53,4 +56,4 @@
  ;; If there is more than one, they won't work right.
  )
 
-;;; init.el ends here
+;; init.el ends here
