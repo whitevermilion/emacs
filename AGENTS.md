@@ -4,13 +4,14 @@
 
 这是一个个人 Emacs 配置项目，位于 `/home/red/.config/emacs`。该项目采用模块化的配置管理方式，将不同功能的配置分离到独立的文件中，便于维护和扩展。主要特点包括：
 
-- **模块化架构**：配置按功能分为 7 个独立模块文件
+- **模块化架构**：配置按功能分为 8 个独立模块文件
 - **语言环境**：UTF-8 编码设置
 - **包管理**：使用 `use-package` 进行包管理和配置
 - **包源**：配置了 GNU ELPA 和 MELPA 两个包仓库
 - **Vim 集成**：集成 Evil 模式，适配 Colemak 键位布局
 - **界面优化**：精简的界面，禁用了工具栏、菜单栏和滚动栏
 - **编辑增强**：支持行号显示、语法高亮、智能括号等（部分功能已注释）
+- **邮件功能**：集成 mu4e 邮件客户端，支持 QQ 邮箱
 
 ## 项目结构
 
@@ -29,7 +30,7 @@
 │   ├── init-editing.el  # 编辑增强功能
 │   ├── init-git.el      # Git 集成
 │   ├── init-misc.el     # 其他实用设置
-│   └── init-mail.el     # 邮件配置（当前存在问题）
+│   └── init-mu4e.el     # mu4e 邮件客户端配置
 ├── elpa/                # 已安装的 Emacs 包
 ├── eln-cache/           # 原生编译缓存
 ├── auto-save-list/      # 自动保存文件
@@ -49,7 +50,7 @@
 5. **init-editing** - 编辑增强功能
 6. **init-git** - Git 集成
 7. **init-misc** - 其他实用设置
-8. **init-mail** - 邮件配置
+8. **init-mu4e** - mu4e 邮件客户端配置
 
 ### 配置模块详解
 
@@ -123,13 +124,45 @@ Git 集成（当前已注释）：
 - 将 `yes-or-no-p` 替换为 `y-or-n-p`
 - 全局自动重新加载文件
 
-#### elisp/init-mail.el
+#### elisp/init-mu4e.el
 
-邮件配置模块（当前存在问题，见下文"已知问题"）
+mu4e 邮件客户端配置：
+
+- **mu4e**：基于 mu 的邮件搜索和管理工具
+- **邮件目录**：`~/Mail`
+- **同步命令**：`mbsync qq`（使用 isync 同步 QQ 邮箱）
+- **自动更新**：每 300 秒自动检查新邮件
+- **用户信息**：
+  - 邮箱：`whitevermilion@qq.com`
+  - 姓名：`whitevermilion`
+- **显示设置**：
+  - 显示邮件中的图片（最大宽度 800px）
+  - 使用漂亮的字符（如箭头）
+- **文件夹快捷键**：
+  - `i` - 收件箱（INBOX）
+  - `s` - 已发送（Sent Messages）
+  - `d` - 草稿（Drafts）
+  - `t` - 已删除（Deleted Messages）
+- **启动快捷键**：`C-c m`
 
 ## 构建和运行
 
 这是一个 Emacs 配置项目，不需要传统的构建过程。
+
+### 依赖项
+
+基本配置无需额外依赖，但如果使用 mu4e 邮件功能，需要安装以下工具：
+
+```bash
+# Arch Linux
+sudo pacman -S mu isync
+
+# Ubuntu/Debian
+sudo apt-get install mu4e isync
+
+# macOS
+brew install mu isync
+```
 
 ### 使用方式
 
@@ -220,6 +253,26 @@ Git 集成（当前已注释）：
 M-x package-install RET package-name RET
 ```
 
+### 使用 mu4e 邮件
+
+1. **启动 mu4e**
+   - 按下 `C-c m` 或在 Emacs 中执行 `M-x mu4e`
+
+2. **同步邮件**
+   - mu4e 会每 300 秒自动同步
+   - 手动同步：在 mu4e 主界面按 `U`（大写）
+
+3. **发送邮件**
+   - 在 mu4e 主界面按 `C`（大写）撰写新邮件
+   - 回复邮件：按 `R`（大写）
+   - 转发邮件：按 `F`（大写）
+
+4. **邮件快捷键**
+   - `i` - 收件箱
+   - `s` - 已发送
+   - `d` - 草稿
+   - `t` - 已删除
+
 ### 排查问题
 
 如果遇到配置问题：
@@ -229,21 +282,6 @@ M-x package-install RET package-name RET
 3. 使用 `M-x toggle-debug-on-error` 启用错误调试
 4. 使用 `M-x eval-buffer` 在当前缓冲区中执行配置代码
 
-## 已知问题
-
-### init-mail.el 加载失败
-
-**错误信息**：
-```
-error: Loading file /home/red/.config/emacs/elisp/init-mail.el failed to provide feature 'init-mail'
-```
-
-**原因**：`init-mail.el` 文件缺少必要的 `(provide 'init-mail)` 声明。
-
-**临时解决方案**：从 `init.el` 中注释掉 `(require 'init-mail)` 行。
-
-**永久解决方案**：在 `init-mail.el` 文件末尾添加 `(provide 'init-mail)`。
-
 ## 注意事项
 
 - 该配置目录是 Git 仓库的一部分（远程：`git@github.com:whitevermilion/emacs.git`）
@@ -252,3 +290,5 @@ error: Loading file /home/red/.config/emacs/elisp/init-mail.el failed to provide
 - 部分增强功能已注释，需要时可以启用
 - 配置使用 UTF-8 编码，确保文件和终端编码一致
 - Evil 模式已配置 Colemak 键位，注意移动键位已重新映射（h/n/e/i）
+- mu4e 邮件功能需要提前安装 mu 和 mbsync（isync）工具
+- mu4e 配置使用 QQ 邮箱，需要配置好 mbsync 的账户信息

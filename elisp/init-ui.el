@@ -13,6 +13,9 @@
 ;; 关闭右侧滚动条，使用键盘滚动更高效
 (scroll-bar-mode -1)
 
+;; 设置默认字体大小为 18pt
+(set-face-attribute 'default nil :height 170)
+
 ;; 主题配置（当前已注释，可按需启用）
 ;; (use-package gruvbox-theme
 ;;   :config

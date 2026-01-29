@@ -5,7 +5,7 @@
 ;;; Code:
 
 ;; 关闭启动欢迎画面
-(setq inhibit-startup-screen t)
+;; (setq inhibit-startup-screen t)
 
 ;; 在所有缓冲区左侧显示行号
 (global-display-line-numbers-mode t)
