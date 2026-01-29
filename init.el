@@ -13,7 +13,9 @@
 ;; ========================================
 ;; 加载各个配置模块
 ;; ========================================
-
+(set-language-environment 'Chinese-GB)
+(set-locale-environment "zh_CN.UTF-8")
+(setq current-language-environment "Chinese")
 ;; 1. 基础设置（编码、行号、缩进等）
 (require 'init-basic)
 
