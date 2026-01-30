@@ -25,3 +25,9 @@ transient/
 
 # 临时问题记录文件
 question.md
+
+# Doom Emacs 配置
+doomemacs/
+
+# 网络安全数据
+network-security.data
