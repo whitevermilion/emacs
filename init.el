@@ -40,6 +40,8 @@
 ;; 邮箱
 (require 'init-mu4e)
 
+;; 中文
+(require 'init-chinese)
 ;;; ========================================
 ;;; 自定义变量（由 Emacs 自动管理）
 ;;; ========================================
@@ -50,7 +52,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages nil)
+ '(smtpmail-smtp-server "smtp.qq.com")
+ '(smtpmail-smtp-service 25))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -4,13 +4,14 @@
 
 这是一个个人 Emacs 配置项目，位于 `/home/red/.config/emacs`。该项目采用模块化的配置管理方式，将不同功能的配置分离到独立的文件中，便于维护和扩展。主要特点包括：
 
-- **模块化架构**：配置按功能分为 8 个独立模块文件
-- **语言环境**：UTF-8 编码设置
+- **模块化架构**：配置按功能分为 9 个独立模块文件
+- **语言环境**：UTF-8 编码设置，中文语言环境
 - **包管理**：使用 `use-package` 进行包管理和配置
 - **包源**：配置了 GNU ELPA 和 MELPA 两个包仓库
 - **Vim 集成**：集成 Evil 模式，适配 Colemak 键位布局
-- **界面优化**：精简的界面，禁用了工具栏、菜单栏和滚动栏
-- **编辑增强**：支持行号显示、语法高亮、智能括号等（部分功能已注释）
+- **界面优化**：精简的界面，禁用滚动条（工具栏和菜单栏当前已启用）
+- **编辑增强**：支持行号显示、当前行高亮、自动缩进、自动括号配对等
+- **中文支持**：配置中文字体和中文输入环境
 - **邮件功能**：集成 mu4e 邮件客户端，支持 QQ 邮箱
 
 ## 项目结构
@@ -30,18 +31,27 @@
 │   ├── init-editing.el  # 编辑增强功能
 │   ├── init-git.el      # Git 集成
 │   ├── init-misc.el     # 其他实用设置
-│   └── init-mu4e.el     # mu4e 邮件客户端配置
+│   ├── init-mu4e.el     # mu4e 邮件客户端配置
+│   └── init-chinese.el  # 中文语言和字体配置
 ├── elpa/                # 已安装的 Emacs 包
 ├── eln-cache/           # 原生编译缓存
 ├── auto-save-list/      # 自动保存文件
-└── transient/           # Transient 缓存目录
+├── transient/           # Transient 缓存目录
+└── url/                 # URL 缓存目录
 ```
 
 ## 核心配置文件
 
 ### init.el
 
-主配置入口文件，负责加载各个模块化配置。加载顺序：
+主配置入口文件，负责加载各个模块化配置。在加载模块之前，还设置了中文语言环境。
+
+**语言环境设置：**
+- `set-language-environment 'Chinese-GB` - 设置中文环境
+- `set-locale-environment "zh_CN.UTF-8"` - 设置区域编码
+- `setq current-language-environment "Chinese"` - 当前语言环境
+
+**模块加载顺序：**
 
 1. **init-basic** - 基础设置（编码、行号、缩进等）
 2. **init-packages** - 包管理配置
@@ -51,6 +61,7 @@
 6. **init-git** - Git 集成
 7. **init-misc** - 其他实用设置
 8. **init-mu4e** - mu4e 邮件客户端配置
+9. **init-chinese** - 中文语言和字体配置
 
 ### 配置模块详解
 
@@ -58,13 +69,13 @@
 
 基础 Emacs 配置，包括：
 
-- 关闭启动欢迎画面
 - 全局行号显示
 - 当前行高亮
 - 列号显示
 - 自动缩进（electric-indent-mode）
 - 自动括号配对（electric-pair-mode）
 - 完整的 UTF-8 编码环境设置
+- 启动欢迎画面（当前已注释，启用时会关闭）
 
 #### elisp/init-packages.el
 
@@ -78,10 +89,10 @@
 
 界面优化配置：
 
-- 禁用工具栏
-- 禁用菜单栏
 - 禁用滚动条
-- 主题配置（当前已注释）
+- 工具栏（当前已注释）
+- 菜单栏（当前已注释）
+- 主题配置（当前已注释，可按需启用 gruvbox-theme）
 
 #### elisp/init-evil.el
 
@@ -145,13 +156,25 @@ mu4e 邮件客户端配置：
   - `t` - 已删除（Deleted Messages）
 - **启动快捷键**：`C-c m`
 
+#### elisp/init-chinese.el
+
+中文语言和字体配置：
+
+- **编码设置**：优先使用 UTF-8 编码
+- **字体配置**（仅在图形界面下生效）：
+  - 英文字体：0xProto Nerd Font Mono（高度 170）
+  - 中文字体：LXGW WenKai（用于汉字和 CJK 字符）
+- **容错处理**：如果字体不存在，会跳过字体设置而不报错
+
 ## 构建和运行
 
 这是一个 Emacs 配置项目，不需要传统的构建过程。
 
 ### 依赖项
 
-基本配置无需额外依赖，但如果使用 mu4e 邮件功能，需要安装以下工具：
+基本配置无需额外依赖，但如果使用 mu4e 邮件功能或中文支持，需要安装以下工具和字体：
+
+**系统工具（mu4e 邮件）：**
 
 ```bash
 # Arch Linux
@@ -162,6 +185,32 @@ sudo apt-get install mu4e isync
 
 # macOS
 brew install mu isync
+```
+
+**中文字体（可选，用于更好的中文显示）：**
+
+```bash
+# Arch Linux
+sudo pacman -S ttf-lxgw-wenkai
+
+# Ubuntu/Debian
+# 从 LXGW 官方网站下载安装或使用其他源
+
+# macOS
+# 使用 Homebrew Cask 安装或手动下载安装
+```
+
+**英文字体（可选，用于编程）：**
+
+```bash
+# Arch Linux
+sudo pacman -S nerd-fonts
+
+# Ubuntu/Debian
+# 从 Nerd Fonts 官方网站下载安装
+
+# macOS
+brew install font-0xproto-nerd-font
 ```
 
 ### 使用方式
@@ -286,9 +335,13 @@ M-x package-install RET package-name RET
 
 - 该配置目录是 Git 仓库的一部分（远程：`git@github.com:whitevermilion/emacs.git`）
 - 当前分支：`main`
-- 配置使用模块化结构，便于维护和扩展
+- 配置使用模块化结构，便于维护和扩展（共 9 个模块）
 - 部分增强功能已注释，需要时可以启用
-- 配置使用 UTF-8 编码，确保文件和终端编码一致
+- 配置使用 UTF-8 编码，并设置中文语言环境（Chinese-GB）
 - Evil 模式已配置 Colemak 键位，注意移动键位已重新映射（h/n/e/i）
+- 工具栏和菜单栏当前已启用（相关配置已注释）
 - mu4e 邮件功能需要提前安装 mu 和 mbsync（isync）工具
 - mu4e 配置使用 QQ 邮箱，需要配置好 mbsync 的账户信息
+- 中文字体配置需要系统中已安装 LXGW WenKai 字体
+- 英文字体配置需要系统中已安装 0xProto Nerd Font Mono 字体
+- 如果字体不存在，会自动跳过字体设置而不会报错

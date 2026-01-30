@@ -35,5 +35,29 @@
 ;; 快捷键设置（C-c m 启动 mu4e）
 (global-set-key (kbd "C-c m") 'mu4e)
 
+;; ========================================
+;; SMTP 发送配置（QQ 邮箱）
+;; ========================================
+
+;; SMTP 服务器设置
+(setq smtpmail-smtp-server "smtp.qq.com")
+(setq smtpmail-smtp-service 587)
+(setq smtpmail-stream-type 'starttls)
+
+;; 使用 pass 获取授权码
+(defun my-mu4e-get-passwd (key)
+  "从 pass 获取密码"
+  (string-trim (shell-command-to-string (concat "pass show " key))))
+
+(setq smtpmail-auth-credentials
+      (list
+       (list "smtp.qq.com" 587 "whitevermilion@qq.com"
+             (lambda ()
+               (my-mu4e-get-passwd "whitevermilion@qq.com")))))
+
+;; 设置发送函数
+(setq send-mail-function 'smtpmail-send-it)
+(setq message-send-mail-function 'smtpmail-send-it)
+
 ;; 提供init-mu4e 功能
 (provide 'init-mu4e)
