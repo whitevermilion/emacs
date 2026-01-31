@@ -4,12 +4,25 @@
 
 ;;; Code:
 
+;; ========================================
+;; 调试输出：确认文件被加载
+;; ========================================
+(message "🔧 [evil.el] 文件开始加载...")
+
+;; 等待 Elpaca 和 use-package 准备好
+(elpaca-wait)
+
+(message "✅ [evil.el] Elpaca 和 use-package 已准备好")
+
 ;; Evil - Vim 模拟器（为 Vim 用户提供熟悉的编辑体验）
 (use-package evil
   :init
+  (message "📦 [evil.el] 开始初始化 Evil...")
   (setq evil-want-keybinding nil)  ; 必须在加载 evil 之前设置，避免与 evil-collection 冲突
   :config
+  (message "⚙️  [evil.el] 开始配置 Evil...")
   (evil-mode 1)  ; 启用 Evil 模式，启动后即进入 Vim 的普通模式
+  (message "🚀 [evil.el] Evil 模式已启用！当前模式: %s" evil-state)
 
   ;; Colemak 基础移动键位映射：h=左, n=下, e=上, i=右
   (define-key evil-normal-state-map "h" 'evil-backward-char)    ; h 向左移动
@@ -42,7 +55,15 @@
 (use-package evil-collection
   :after evil
   :config
-  (evil-collection-init))  ; 初始化所有默认模式的 Vim 键位
+  (message "📦 [evil.el] 开始初始化 evil-collection...")
+  (evil-collection-init)  ; 初始化所有默认模式的 Vim 键位
+  (message "✅ [evil.el] evil-collection 初始化完成！"))
 
 (provide 'evil)
+
+;; ========================================
+;; 调试输出：文件加载完成
+;; ========================================
+(message "🎉 [evil.el] 文件加载完成！Evil 状态: %s" (if (bound-and-true-p evil-mode) "✅ 已启用" "❌ 未启用"))
+
 ;;; evil.el ends here

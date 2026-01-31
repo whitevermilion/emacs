@@ -19,28 +19,48 @@
 ;; ========================================
 ;; 0. 包管理器（必须最先加载）
 ;; ========================================
+(message "🚀 [init.el] 开始加载 core/elpaca...")
 (require 'core/elpaca)
+(message "✅ [init.el] core/elpaca 加载完成")
 
 ;; 1. 基础设置（编码、行号、缩进等）
+(message "🚀 [init.el] 开始加载 core/basic...")
 (require 'core/basic)
+(message "✅ [init.el] core/basic 加载完成")
 
 ;; 2. 界面优化
+(message "🚀 [init.el] 开始加载 passiveplugins/ui...")
 (require 'passiveplugins/ui)
+(message "✅ [init.el] passiveplugins/ui 加载完成")
 
-;; 4. Evil 和 Colemak 键位
+;; 3. Evil 和 Colemak 键位
+(message "🚀 [init.el] 开始加载 plugins/evil...")
 (require 'plugins/evil)
+(message "✅ [init.el] plugins/evil 加载完成")
 
-;; 5. 编辑增强功能
+;; 4. 编辑增强功能
+(message "🚀 [init.el] 开始加载 core/editing...")
 (require 'core/editing)
+(message "✅ [init.el] core/editing 加载完成")
 
-;; 6. Git 集成
+;; 5. Git 集成
+(message "🚀 [init.el] 开始加载 plugins/git...")
 (require 'plugins/git)
+(message "✅ [init.el] plugins/git 加载完成")
 
-;; 7. 其他实用设置
+;; 6. 其他实用设置
+(message "🚀 [init.el] 开始加载 core/misc...")
 (require 'core/misc)
+(message "✅ [init.el] core/misc 加载完成")
 
-;; 邮箱
+;; 7. 邮箱
+(message "🚀 [init.el] 开始加载 plugins/mu4e...")
 (require 'plugins/mu4e)
+(message "✅ [init.el] plugins/mu4e 加载完成")
 
-;; 中文
+;; 8. 中文
+(message "🚀 [init.el] 开始加载 core/chinese...")
 (require 'core/chinese)
+(message "✅ [init.el] core/chinese 加载完成")
+
+(message "🎉 [init.el] 所有配置模块加载完成！")
