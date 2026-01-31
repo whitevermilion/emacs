@@ -8,7 +8,7 @@
 ;; 文件头声明：启用词法作用域（lexical binding），这是现代 Emacs Lisp 的推荐做法
 
 ;; 添加配置模块目录到加载路径
-(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; ========================================
 ;; 加载各个配置模块
