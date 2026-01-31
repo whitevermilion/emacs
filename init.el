@@ -15,6 +15,12 @@
 (set-language-environment 'Chinese-GB)
 (set-locale-environment "zh_CN.UTF-8")
 (setq current-language-environment "Chinese")
+
+;; ========================================
+;; 0. 包管理器（必须最先加载）
+;; ========================================
+(require 'core/elpaca)
+
 ;; 1. 基础设置（编码、行号、缩进等）
 (require 'core/basic)
 
