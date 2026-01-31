@@ -42,24 +42,3 @@
 
 ;; 中文
 (require 'init-chinese)
-;;; ========================================
-;;; 自定义变量（由 Emacs 自动管理）
-;;; ========================================
-;; 这部分配置通常由 Emacs 的图形界面设置工具自动生成
-;; 手动编辑后可能会被覆盖，所以保持注释状态
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages nil)
- '(smtpmail-smtp-server "smtp.qq.com")
- '(smtpmail-smtp-service 587))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-;; init.el ends here
