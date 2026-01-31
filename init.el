@@ -24,10 +24,7 @@
 ;; 1. 基础设置（编码、行号、缩进等）
 (require 'core/basic)
 
-;; 2. 包管理配置
-(require 'core/packages)
-
-;; 3. 界面优化
+;; 2. 界面优化
 (require 'passiveplugins/ui)
 
 ;; 4. Evil 和 Colemak 键位
