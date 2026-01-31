@@ -1,4 +1,4 @@
-;;; init-editing.el --- 编辑增强功能
+;;; editing.el --- 编辑增强功能
 ;;; Commentary:
 ;; 编辑增强插件配置，包括自动补全、语法检查等
 
@@ -27,5 +27,5 @@
 ;;   (require 'smartparens-config)
 ;;   (smartparens-global-mode 1))
 
-(provide 'init-editing)
-;;; init-editing.el ends here
+(provide 'editing)
+;;; editing.el ends here

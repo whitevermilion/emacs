@@ -1,4 +1,4 @@
-;;; init-packages.el --- 包管理配置
+;;; packages.el --- 包管理配置
 ;;; Commentary:
 ;; Emacs 包管理系统配置，包括包源和 use-package 设置
 
@@ -29,5 +29,5 @@
 ;; 这样使用 use-package 配置插件时，不需要每次都写 :ensure t
 (setq use-package-always-ensure t)
 
-(provide 'init-packages)
-;;; init-packages.el ends here
+(provide 'packages)
+;;; packages.el ends here

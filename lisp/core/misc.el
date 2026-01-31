@@ -1,4 +1,4 @@
-;;; init-misc.el --- 其他实用设置
+;;; misc.el --- 其他实用设置
 ;;; Commentary:
 ;; 其他实用的 Emacs 配置，如自动重载、锁文件等
 
@@ -15,5 +15,5 @@
 ;; 当文件在 Emacs 外部被修改时，自动重新加载缓冲区
 (global-auto-revert-mode t)
 
-(provide 'init-misc)
-;;; init-misc.el ends here
+(provide 'misc)
+;;; misc.el ends here

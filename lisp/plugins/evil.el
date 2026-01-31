@@ -1,4 +1,4 @@
-;;; init-evil.el --- Evil 和 Colemak 键位配置
+;;; evil.el --- Evil 和 Colemak 键位配置
 ;;; Commentary:
 ;; Vim 模拟器 Evil 配置，以及 Colemak 键位映射
 
@@ -44,5 +44,5 @@
   :config
   (evil-collection-init))  ; 初始化所有默认模式的 Vim 键位
 
-(provide 'init-evil)
-;;; init-evil.el ends here
+(provide 'evil)
+;;; evil.el ends here

@@ -1,5 +1,8 @@
 ;; 添加配置模块目录到加载路径
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp/core" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp/plugins" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp/passiveplugins" user-emacs-directory))
 
 ;; 将运行时数据文件移到 XDG 标准目录，保持配置目录整洁
 (setq url-cache-directory (expand-file-name "~/.cache/emacs/url/"))
@@ -13,28 +16,28 @@
 (set-locale-environment "zh_CN.UTF-8")
 (setq current-language-environment "Chinese")
 ;; 1. 基础设置（编码、行号、缩进等）
-(require 'init-basic)
+(require 'core/basic)
 
 ;; 2. 包管理配置
-(require 'init-packages)
+(require 'core/packages)
 
 ;; 3. 界面优化
-(require 'init-ui)
+(require 'passiveplugins/ui)
 
 ;; 4. Evil 和 Colemak 键位
-(require 'init-evil)
+(require 'plugins/evil)
 
 ;; 5. 编辑增强功能
-(require 'init-editing)
+(require 'core/editing)
 
 ;; 6. Git 集成
-(require 'init-git)
+(require 'plugins/git)
 
 ;; 7. 其他实用设置
-(require 'init-misc)
+(require 'core/misc)
 
 ;; 邮箱
-(require 'init-mu4e)
+(require 'plugins/mu4e)
 
 ;; 中文
-(require 'init-chinese)
+(require 'core/chinese)

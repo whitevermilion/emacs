@@ -18,4 +18,4 @@
      (message "字体设置跳过（可能字体不存在）"))))
 
 ;; 3. 提供功能（必须）
-(provide 'init-chinese)
+(provide 'chinese)

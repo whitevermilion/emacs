@@ -1,4 +1,4 @@
-;;; init-basic.el --- 基础设置
+;;; basic.el --- 基础设置
 ;;; Commentary:
 ;; 基础的 Emacs 配置，包括编码、行号、缩进等
 
@@ -43,5 +43,5 @@
 ;; 优先使用 UTF-8
 (prefer-coding-system 'utf-8)
 
-(provide 'init-basic)
-;;; init-basic.el ends here
+(provide 'core/basic)
+;;; basic.el ends here

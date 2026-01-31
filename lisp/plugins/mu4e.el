@@ -67,4 +67,4 @@
 (setq send-mail-function 'smtpmail-send-it
       message-send-mail-function 'smtpmail-send-it)
 
-(provide 'init-mu4e)
+(provide 'mu4e)

@@ -1,4 +1,4 @@
-;;; init-ui.el --- 界面优化
+;;; ui.el --- 界面优化
 ;;; Commentary:
 ;; Emacs 界面优化配置，包括工具栏、菜单栏、滚动条等
 
@@ -19,5 +19,5 @@
 ;;   (load-theme 'gruvbox-dark-medium t))
 ;; 说明：加载 gruvbox 主题（一种流行的深色配色方案）
 
-(provide 'init-ui)
-;;; init-ui.el ends here
+(provide 'ui)
+;;; ui.el ends here
